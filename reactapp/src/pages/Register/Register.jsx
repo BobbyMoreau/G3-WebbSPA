@@ -27,6 +27,14 @@ const Register = () => {
         }
     };
 
+    const CreateWithEnterKey = (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            handleRegister();
+        }
+        
+    }
+
     // TODO: add styles
     return (
         <div>
@@ -46,6 +54,7 @@ const Register = () => {
                                         type="text"
                                         value={username}
                                         onChange={(e) => setUsername(e.target.value)}
+                                        onKeyDown={CreateWithEnterKey}
                                     />
                                 </div>
 
@@ -57,6 +66,7 @@ const Register = () => {
                                             type="email"
                                             value={email}
                                             onChange={(e) => setEmail(e.target.value)}
+                                            onKeyDown={CreateWithEnterKey}
                                         />
                                     </div>
                                     <div className="input-container">
@@ -66,6 +76,7 @@ const Register = () => {
                                             type="password"
                                             value={password}
                                             onChange={(e) => setPassword(e.target.value)}
+                                            onKeyDown={CreateWithEnterKey}
                                         />
                                     </div>
 

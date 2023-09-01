@@ -10,7 +10,6 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
     const [, setCookie] = useCookies(['session']);
-
     
 
         const handleLogin = async () => {
@@ -34,6 +33,10 @@ const Login = () => {
             }
         };
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        handleLogin();
+    }
 
     // TODO: add styles
     return (
@@ -46,7 +49,7 @@ const Login = () => {
                                 <h2>Logga in</h2>
                                 <div className="container">
                                     <div className="row">
-                                        <form>
+                                        <form onSubmit={handleSubmit}>
                                             <div className="col-md-12 mb-3">
                                                 <label style={{ fontWeight: 'bold', marginBottom: '2px', display: 'block' }}>Username:</label>
                                                 <input
@@ -66,7 +69,7 @@ const Login = () => {
                                                 />
                                             </div>
                                             <div className="col-md mb-3 d-flex justify-content-between">
-                                                <button className="btn btn-sm btn-primary" type="button" onClick={handleLogin}>
+                                                <button className="btn btn-sm btn-primary" type="submit" onClick={handleLogin}>
                                                     Login
                                                 </button>
                                                 <a type="button" href="/register">
